@@ -1,0 +1,24 @@
+This is the collection of code we used for our project. We have included some intermediate models as well so you can see
+our design process. We started out with a wavenet approach, which you can find in Wavenet.py on a dataset that was sampled
+at 48kHz. The model did not train and the dataset was too large so we tried a different approach. We went with a smaller
+dataset (LJSpeech) and created a small model that would end up being our best performing model for upsampling by a
+factor of 2. This can be found in SimpleUpsampler.py, and is the model in our report. We also attempted to make a larger
+model to see if the increased capacity would help capture more relevant features. Surprisingly, this did not happen and
+the model achieved the same performance as SimpleUpsampler. We also tried to upsample the audio by a factor of 3 with the
+model SimpleUpsampler3.py, although this had limited success. The model was able to capture the low frequency information
+but there were a lot of high frequency artifacts. Given a longer project timetable we would explore different model
+configurations to try to make this work.
+
+The python notebook in this folder is the nodebook we used to do most of our work. We worked in colab because it was easy
+to set up and provvided us with access to a powerful GPU. For submission, we have cleaned up the contents of the notebook
+and placed them in the file train.py, which one could use to train with a regular python interpreter and access to GPU.
+We have also included a copy of our trained model, lite.torch (named because of its few parameters).
+
+We have also included some other files. These include:
+- batch_loss_lite.png, a plot of the loss at each minibatch while training lite.torch
+- original_signal1.png, original_signal2.png, the spectrograms of two clips from our test set
+- new_signal1.png, new_signal2.png, the spectrograms of the reconstructions of the clips corresponding to
+original_signal1.png, original_signal2.png
+- test_target.wav, an audio clip from the test set
+- test.wav the same audio clip, downsampled to 12kHz
+- test_out.wav, the result of running test.wav through lite.torch
